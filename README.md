@@ -1,24 +1,76 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column                | Type   | Options     |
+| --------------------- | ------ | ----------- |
+| name                  | string | null: false |
+| name_reading          | string | null: false |
+| birth_year            | string | null: false |
+| birth_month           | string | null: false |
+| birth_day             | string | null: false |
+| nickname              | string | null: false |
+| email                 | string | null: false |
+| password              | string | null: false |
+| password_confirmation | string | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :comments
+- has_many :order
 
-* Configuration
+## items テーブル
 
-* Database creation
+| Column           | Type       | Options     |
+| ---------------- | ---------- | ----------- |
+| user_id          | references | null: false |
+| image            | string     | null: false |
+| item_name        | string     | null: false |
+| explanation      | text       | null: false |
+| category         | string     | null: false |
+| status           | string     | null: false |
+| shipping_charges | string     | null: false |
+| area             | string     | null: false |
+| delivery_days    | string     | null: false |
+| price            | integer    | null: false |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- belongs_to :user
+- has_one :order
+- has_many :comments
 
-* Services (job queues, cache servers, search engines, etc.)
+## order テーブル
 
-* Deployment instructions
+| Column        | Type      | Options     |
+| --------------| --------- | ----------- |
+| buyer_user_id | reference | null: false |
+| item_id       | reference | null: false |
+| postal_code   | integer   | null: false |
+| prefectures   | string    | null: false |
+| city          | string    | null: false |
+| adress        | integer   | null: false |
+| building      | string    |             |
+| tel           | integer   | null: false |
 
-* ...
+### Association
+
+- belongs_to :user
+- has_one :item
+
+## cards(クレジットカード)
+PAY.JPで実装するため不要
+
+## comments テーブル
+
+| Column  | Type      | Options     |
+| ------- | --------- | ----------- |
+| user_id | reference | null: false |
+| item_id | reference | null: false |
+| text    | text      | null: false |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item

@@ -28,6 +28,11 @@
 | image            | string     | null: false |
 | name             | string     | null: false |
 | explanation      | text       | null: false |
+| category_id      | integer    | null: false |
+| status_id        | integer    | null: false |
+| shipping_charges_id | integer | null:false  |
+| area_id          | integer    | null: false |
+| delivery_id      | integer    | null: false |
 | price            | integer    | null: false |
 
 ### Association
@@ -59,6 +64,7 @@ ActiveHushを使用するため不要
 | --------------| --------- | ----------- |
 | item_id       | string    | null: false |
 | postal_code   | string    | null: false |
+| prefecture_id | integer   | null: false |
 | city          | string    | null: false |
 | address       | integer   | null: false |
 | building      | string    |             |
@@ -69,7 +75,7 @@ ActiveHushを使用するため不要
 - belongs_to :item
 
 ### prefectures
-ActiveHushを使用するため不要
+ActiveHushを使用
 
 ### cards(クレジットカード)
 PAY.JPで実装するため不要

@@ -43,14 +43,14 @@
 - has_one :address
 
 ### category,status,shipping_charges,area,delivery_days
-ActiveHushを使用するため不要
+ActiveHushを使用する
 
 ## item_purchases テーブル
 
-| Column        | Type      | Options     |
-| --------------| --------- | ----------- |
-| user_id       | string    | null: false |
-| item_id       | string    | null: false |
+| Column   | Type      | Options               |
+| ---------| --------- | --------------------- |
+| user_id  | integer   | null: false, FK: true |
+| item_id  | integer   | null: false, FK: true |
 
 ### Association
 
@@ -62,11 +62,11 @@ ActiveHushを使用するため不要
 
 | Column        | Type      | Options     |
 | --------------| --------- | ----------- |
-| item_id       | string    | null: false |
+| item_id       | integer    | null: false |
 | postal_code   | string    | null: false |
-| prefecture_id | string   | null: false |
+| prefecture_id | integer   | null: false |
 | city          | string    | null: false |
-| address       | integer   | null: false |
+| address       | string    | null: false |
 | building      | string    |             |
 | tel           | string    | null: false |
 

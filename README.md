@@ -6,9 +6,7 @@
 | --------------------- | ------ | ----------- |
 | name                  | string | null: false |
 | name_reading          | string | null: false |
-| birth_year            | string | null: false |
-| birth_month           | string | null: false |
-| birth_day             | string | null: false |
+| birthday              | date   | null: false |
 | nickname              | string | null: false |
 | email                 | string | null: false |
 | password              | string | null: false |
@@ -18,7 +16,8 @@
 
 - has_many :items
 - has_many :comments
-- has_many :order
+- has_many :users_items, through
+- has_one :address
 
 ## items テーブル
 
@@ -38,29 +37,46 @@
 ### Association
 
 - belongs_to :user
-- has_one :order
+- has_many :users_items, through
 - has_many :comments
+- belongs_to :address
 
-## order テーブル
+## users_items テーブル
 
 | Column        | Type      | Options     |
 | --------------| --------- | ----------- |
-| buyer_user_id | reference | null: false |
-| item_id       | reference | null: false |
-| postal_code   | integer   | null: false |
-| prefectures   | string    | null: false |
-| city          | string    | null: false |
-| adress        | integer   | null: false |
-| building      | string    |             |
-| tel           | integer   | null: false |
+| user_id       | string    | null: false |
+| item_id       | string    | null: false |
 
 ### Association
 
 - belongs_to :user
-- has_one :item
+- belongs_to :item
 
-## cards(クレジットカード)
+
+## address テーブル
+
+| Column        | Type      | Options     |
+| --------------| --------- | ----------- |
+| user_id       | string    | null: false |
+| item_id       | string    | null: false |
+| postal_code   | string    | null: false |
+| city          | string    | null: false |
+| address       | integer   | null: false |
+| building      | string    |             |
+| tel           | string    | null: false |
+
+### Association
+
+- belongs_to :item
+- belongs_to :user
+
+### prefectures
+ActiveHushを使用するため不要
+
+### cards(クレジットカード)
 PAY.JPで実装するため不要
+
 
 ## comments テーブル
 

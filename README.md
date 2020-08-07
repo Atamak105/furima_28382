@@ -61,15 +61,15 @@ ActiveHushを使用する
 
 ## address テーブル
 
-| Column        | Type      | Options     |
-| --------------| --------- | ----------- |
-| item_id       | integer    | null: false, FK: true |
-| postal_code   | string    | null: false |
-| prefecture_id | integer   | null: false |
-| city          | string    | null: false |
-| address       | string    | null: false |
-| building      | string    |             |
-| tel           | string    | null: false |
+| Column            | Type      | Options     |
+| ------------------| --------- | ----------- |
+| item_purchases_id | integer    | null: false, FK: true |
+| postal_code       | string    | null: false |
+| prefecture_id     | integer   | null: false |
+| city              | string    | null: false |
+| address           | string    | null: false |
+| building          | string    |             |
+| tel               | string    | null: false |
 
 ### Association
 

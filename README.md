@@ -1,24 +1,96 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column                | Type   | Options     |
+| --------------------- | ------ | ----------- |
+| last_name             | string | null: false |
+| first_name            | string | null: false |
+| last_name_reading     | string | null: false |
+| first_name_reading    | string | null: false |
+| birthday              | date   | null: false |
+| nickname              | string | null: false |
+| email                 | string | null: false |
+| password              | string | null: false |
+| password_confirmation | string | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :comments
+- has_many :item_purchases
 
-* Configuration
+## items テーブル
 
-* Database creation
+| Column           | Type       | Options     |
+| ---------------- | ---------- | ----------- |
+| user_id          | integer    | null: false ,FK: true |
+| image            | string     | null: false |
+| name             | string     | null: false |
+| explanation      | text       | null: false |
+| category_id      | integer    | null: false |
+| status_id        | integer    | null: false |
+| shipping_charges_id | integer | null:false  |
+| area_id          | integer    | null: false |
+| delivery_id      | integer    | null: false |
+| price            | integer    | null: false |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- belongs_to :user
+- has_many :item_purchases
+- has_many :comments
 
-* Services (job queues, cache servers, search engines, etc.)
+### category,status,shipping_charges,area,delivery_days
+ActiveHushを使用する
 
-* Deployment instructions
+## item_purchases テーブル
 
-* ...
+| Column   | Type      | Options               |
+| ---------| --------- | --------------------- |
+| user_id  | integer   | null: false, FK: true |
+| item_id  | integer   | null: false, FK: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+- has_one :address
+
+
+
+## address テーブル
+
+| Column            | Type      | Options     |
+| ------------------| --------- | ----------- |
+| item_purchases_id | integer    | null: false, FK: true |
+| postal_code       | string    | null: false |
+| prefecture_id     | integer   | null: false |
+| city              | string    | null: false |
+| address           | string    | null: false |
+| building          | string    |             |
+| tel               | string    | null: false |
+
+### Association
+
+- belongs_to :item_purchases
+
+### prefectures
+ActiveHushを使用
+
+### cards(クレジットカード)
+PAY.JPで実装するため不要
+
+
+## comments テーブル
+
+| Column  | Type      | Options     |
+| ------- | --------- | ----------- |
+| user_id | integer   | null: false, FK: true |
+| item_id | integer   | null: false, FK: true |
+| text    | text      | null: false |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item

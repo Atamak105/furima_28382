@@ -18,7 +18,7 @@
 
 - has_many :items
 - has_many :comments
-- has_many :users_items
+- has_many :item_purchases
 
 ## items テーブル
 
@@ -38,14 +38,14 @@
 ### Association
 
 - belongs_to :user
-- has_many :users_items
+- has_many :item_purchases
 - has_many :comments
 - has_one :address
 
 ### category,status,shipping_charges,area,delivery_days
 ActiveHushを使用するため不要
 
-## users_items テーブル
+## item_purchases テーブル
 
 | Column        | Type      | Options     |
 | --------------| --------- | ----------- |

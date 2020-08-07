@@ -40,7 +40,6 @@
 - belongs_to :user
 - has_many :item_purchases
 - has_many :comments
-- has_one :address
 
 ### category,status,shipping_charges,area,delivery_days
 ActiveHushを使用する
@@ -56,13 +55,15 @@ ActiveHushを使用する
 
 - belongs_to :user
 - belongs_to :item
+- has_one :address
+
 
 
 ## address テーブル
 
 | Column        | Type      | Options     |
 | --------------| --------- | ----------- |
-| item_id       | integer    | null: false |
+| item_id       | integer    | null: false, FK: true |
 | postal_code   | string    | null: false |
 | prefecture_id | integer   | null: false |
 | city          | string    | null: false |
@@ -72,7 +73,7 @@ ActiveHushを使用する
 
 ### Association
 
-- belongs_to :item
+- belongs_to :item_purchases
 
 ### prefectures
 ActiveHushを使用
@@ -85,8 +86,8 @@ PAY.JPで実装するため不要
 
 | Column  | Type      | Options     |
 | ------- | --------- | ----------- |
-| user_id | integer   | null: false |
-| item_id | integer   | null: false |
+| user_id | integer   | null: false, FK: true |
+| item_id | integer   | null: false, FK: true |
 | text    | text      | null: false |
 
 ### Association

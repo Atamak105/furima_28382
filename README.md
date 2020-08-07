@@ -4,8 +4,10 @@
 
 | Column                | Type   | Options     |
 | --------------------- | ------ | ----------- |
-| name                  | string | null: false |
-| name_reading          | string | null: false |
+| last_name             | string | null: false |
+| first_name            | string | null: false |
+| last_name_reading     | string | null: false |
+| first_name_reading    | string | null: false |
 | birthday              | date   | null: false |
 | nickname              | string | null: false |
 | email                 | string | null: false |
@@ -16,30 +18,27 @@
 
 - has_many :items
 - has_many :comments
-- has_many :users_items, through
-- has_one :address
+- has_many :users_items
 
 ## items テーブル
 
 | Column           | Type       | Options     |
 | ---------------- | ---------- | ----------- |
-| user_id          | integer    | null: false |
+| user_id          | integer    | null: false ,FK: true |
 | image            | string     | null: false |
-| item_name        | string     | null: false |
+| name             | string     | null: false |
 | explanation      | text       | null: false |
-| category         | string     | null: false |
-| status           | string     | null: false |
-| shipping_charges | string     | null: false |
-| area             | string     | null: false |
-| delivery_days    | string     | null: false |
 | price            | integer    | null: false |
 
 ### Association
 
 - belongs_to :user
-- has_many :users_items, through
+- has_many :users_items
 - has_many :comments
-- belongs_to :address
+- has_one :address
+
+### category,status,shipping_charges,area,delivery_days
+ActiveHushを使用するため不要
 
 ## users_items テーブル
 
@@ -58,7 +57,6 @@
 
 | Column        | Type      | Options     |
 | --------------| --------- | ----------- |
-| user_id       | string    | null: false |
 | item_id       | string    | null: false |
 | postal_code   | string    | null: false |
 | city          | string    | null: false |
@@ -69,7 +67,6 @@
 ### Association
 
 - belongs_to :item
-- belongs_to :user
 
 ### prefectures
 ActiveHushを使用するため不要

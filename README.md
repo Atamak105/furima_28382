@@ -23,7 +23,7 @@
 
 | Column           | Type       | Options     |
 | ---------------- | ---------- | ----------- |
-| user_id          | references | null: false |
+| user_id          | integer    | null: false |
 | image            | string     | null: false |
 | item_name        | string     | null: false |
 | explanation      | text       | null: false |
@@ -82,8 +82,8 @@ PAY.JPで実装するため不要
 
 | Column  | Type      | Options     |
 | ------- | --------- | ----------- |
-| user_id | reference | null: false |
-| item_id | reference | null: false |
+| user_id | integer   | null: false |
+| item_id | integer   | null: false |
 | text    | text      | null: false |
 
 ### Association

@@ -64,7 +64,7 @@ ActiveHushを使用するため不要
 | --------------| --------- | ----------- |
 | item_id       | string    | null: false |
 | postal_code   | string    | null: false |
-| prefecture_id | integer   | null: false |
+| prefecture_id | string   | null: false |
 | city          | string    | null: false |
 | address       | integer   | null: false |
 | building      | string    |             |

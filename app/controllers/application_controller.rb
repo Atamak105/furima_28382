@@ -1,7 +1,18 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth
-  before_action :authenticate_user! #ログインしていない場合サインアップの画面に遷移する
+  # before_action :authenticate_user!,except: [:index, :show] #ログインしていない場合サインアップの画面に遷移する
   before_action :configure_permitted_parameters, if: :devise_controller?
+
+  # サインインしたらログインユーザーのTOP画面へ遷移する
+  def after_sign_in_path_for(resource)
+    user_session_path
+  end
+
+
+  # サインアウトしたらTOPへ遷移
+  def after_sign_out_path_for(resource)
+    root_path
+  end
 
 
   private
@@ -14,8 +25,9 @@ class ApplicationController < ActionController::Base
 
   protected
 
+    #passwordとemailはデフォルトであるので不要
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :first_name, :last_name, :first_name_reading, :last_name_reading, :birthday])
   end
 
 

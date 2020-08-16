@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :item_purchases
 
-  # 入力必須項目の設定 PW英数混合のバリデーション設定
+  # 入力必須項目の設定 バリデーション設定
   validates :birthday, :nickname, :email, :encrypted_password, presence:true
   validates :password, presence: true, length: { minimum: 6 }, format: { with: VALID_PASSWORD_REGEX }
   validates :last_name_reading, :first_name_reading, format: {with: VALID_NAMEREADING_REGEX}

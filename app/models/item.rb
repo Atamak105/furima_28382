@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_charges
   belongs_to_active_hash :area
   belongs_to_active_hash :delivery
+  has_one_attached :image
 
 
   belongs_to :user

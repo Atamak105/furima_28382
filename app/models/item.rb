@@ -7,12 +7,10 @@ class Item < ApplicationRecord
   belongs_to_active_hash :area
   belongs_to_active_hash :delivery
   has_one_attached :image
-
-
   belongs_to :user
   has_one :item_purchases
 
-  validates :image, presence: true
+  # validates :image, presence: true
   validates :category_id, :status_id, :shipping_charges_id, :area_id, :delivery_id, presence: true, inclusion: { in: 1..47 }
   validates :name, length: { maximum: 40 }, presence: true
   validates :explanation, length: { maximum: 1000 }, presence: true

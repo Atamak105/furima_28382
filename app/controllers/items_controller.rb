@@ -1,10 +1,10 @@
 class ItemsController < ApplicationController
-  # ログインしていない場合TOPに戻る
-  # before_action :move_to_index, except: :index
+  # ログインしていない場合ログイン画面に遷移する
+   before_action :move_to_index, except: :index
 
-  # def move_to_index
-  #   redirect_to action: :index unless user_signed_in?
-  # end
+  def move_to_index
+    redirect_to new_user_session_path unless user_signed_in?
+  end
 
 
   def new

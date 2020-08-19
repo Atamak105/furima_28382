@@ -1,4 +1,5 @@
 $(function(){
+  // console.log ("OK")
   $("#item-price").on('keyup', function(){
     var price = $("#item-price").val();
     if( 300 <= price && price <= 9999999) {

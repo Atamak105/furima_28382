@@ -1,5 +1,4 @@
 FactoryBot.define do
-
   factory :item do
     association :user
     name { "ココナッツ" }
@@ -11,8 +10,6 @@ FactoryBot.define do
     delivery_id { 2 }
     price { 9000 }
   end
-
-  
 end
 
 

@@ -38,7 +38,7 @@
 ### Association
 
 - belongs_to :user
-- has_many :item_purchases
+- has_one :item_purchases
 - has_many :comments
 
 ### category,status,shipping_charges,area,delivery_days

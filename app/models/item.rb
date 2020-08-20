@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one :item_purchases
 
-  with_option presence: true do
+  with_options presence: true do
     validates :image
     validates :category_id, :status_id, :shipping_charges_id, :area_id, :delivery_id, inclusion: { in: 1..47 }
     validates :name, length: { maximum: 40 }

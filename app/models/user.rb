@@ -16,5 +16,5 @@ class User < ApplicationRecord
   validates :password, presence: true, format: { with: VALID_PASSWORD_REGEX }
   validates :last_name_reading, :first_name_reading, format: {with: VALID_NAMEREADING_REGEX}
   validates :last_name, :first_name, format: {with: VALID_NAME_REGEX}
-  validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i}
+  validates :email, presence: true, uniqueness: true
 end

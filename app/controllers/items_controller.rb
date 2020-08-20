@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-   before_action :move_to_login, except: :index
+   before_action :move_to_login, except: [:index, :show]
 
   def new
     @item = Item.new
@@ -20,6 +20,19 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+  end
+
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to item_path
+    else
+      render 'edit'
+    end
   end
 
   private

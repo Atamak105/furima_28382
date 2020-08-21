@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
    before_action :move_to_login, except: [:index, :show]
+   before_action :set_message, only: [:show, :edit, :update]
 
   def new
     @item = Item.new
@@ -18,16 +19,17 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
+  def set_message
     @item = Item.find(params[:id])
+  end
+
+  def show
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to item_path
     else

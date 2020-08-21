@@ -19,10 +19,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def set_message
-    @item = Item.find(params[:id])
-  end
-
   def show
   end
 
@@ -46,6 +42,10 @@ class ItemsController < ApplicationController
   # ログインしていない場合ログイン画面に遷移する
   def move_to_login
     redirect_to new_user_session_path unless user_signed_in?
+  end
+  
+  def set_message
+    @item = Item.find(params[:id])
   end
 
 end

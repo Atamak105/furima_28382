@@ -65,7 +65,7 @@ ActiveHushを使用する
 | ------------------| --------- | ----------- |
 | item_purchases_id | integer    | null: false, FK: true |
 | postal_code       | string    | null: false |
-| prefecture_id     | integer   | null: false |
+| area_id           | integer   | null: false |
 | city              | string    | null: false |
 | address           | string    | null: false |
 | building          | string    |             |
@@ -75,7 +75,7 @@ ActiveHushを使用する
 
 - belongs_to :item_purchases
 
-### prefectures
+### area
 ActiveHushを使用
 
 ### cards(クレジットカード)

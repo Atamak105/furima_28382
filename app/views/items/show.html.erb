@@ -20,7 +20,6 @@
     </div>
     <div class="item-price-box">
       <span class="item-price">
-        <%# ¥ 999,999,999 %>
         ¥<%= @item.price %>
       </span>
       <span class="item-postage">
@@ -35,7 +34,7 @@
       <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
     <% elsif %> 
     <%# 商品が売れていない場合の表示 %>
-    <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
+    <%= link_to '購入画面に進む', item_item_purchases_path(@item.id),class:"item-red-btn"%>
     <% end %> 
 
     <div class="item-explain-box">

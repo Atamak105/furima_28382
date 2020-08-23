@@ -3,6 +3,9 @@ class ItemPurchase < ApplicationRecord
   belongs_to :user
   belongs_to :item
   has_one :address
-  
+
+  with_option presence: true do
+  validates :user_id, :item_id
+  end
 
 end

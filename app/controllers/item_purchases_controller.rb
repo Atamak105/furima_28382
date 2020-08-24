@@ -25,10 +25,10 @@ class ItemPurchasesController < ApplicationController
   
   end
 
-  # def done
-  #   @item_purchaser = Item.find(params[:item_id])
-  #   @item_purchaser.update( user_id: current_user.id)
-  # end
+  def done
+    @item_buyer = Item.find(params[:item_id])
+    @item_buyer.update( user_id: current_user.id)
+  end
 
 
 

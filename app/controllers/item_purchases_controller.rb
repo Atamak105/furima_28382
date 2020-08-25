@@ -1,19 +1,19 @@
 class ItemPurchasesController < ApplicationController
-  before_action :set_item, only: [:index, :new, :create, :pay_item]
+  before_action :move_to_login
+  before_action :set_item, only: [:index, :new, :create, :pay_item, :not_user, :not_buy]
+  before_action :not_user
+  before_action :not_buy
 
   def index
-    # @item = Item.find(params[:item_id])
   end
 
   def new
     @purchase = Purchase.new
-    # @item = Item.find(params[:item_id])
   end
 
   def create
 
     @purchase = Purchase.new(purchase_params)
-    # @item = Item.find(params[:item_id])
   
     if @purchase.valid?
       pay_item
@@ -34,8 +34,27 @@ class ItemPurchasesController < ApplicationController
 
   private
 
+  # ログインしていない場合ログイン画面に遷移する
+  def move_to_login
+    redirect_to new_user_session_path unless user_signed_in?
+  end
+
   def set_item
     @item = Item.find(params[:item_id])
+  end
+
+  # 出品者は自分の出品商品購入画面へアクセスできない
+  def not_user
+    if current_user.id == @item.user_id
+      redirect_to item_path(@item.id)
+    end
+  end
+
+  # 購入済商品は購入できない
+  def not_buy
+    if ItemPurchase.exists?(item: @item)
+      redirect_to root_path
+    end
   end
 
   def purchase_params
@@ -44,7 +63,6 @@ class ItemPurchasesController < ApplicationController
 
   # PAY.JPで支払い情報を生成するオブジェクト
   def pay_item
-    # @item = Item.find(params[:item_id])
     Payjp.api_key = "sk_test_d406d2c8f1467a013527cd5b"  # PAY.JPテスト秘密鍵
     Payjp::Charge.create(
       amount: @item.price,  # 商品の値段

@@ -3,9 +3,10 @@ class Purchase
   include ActiveModel::Model
   attr_accessor :token, :user_id, :item_id, :postal_code, :area_id, :city, :address, :building, :tel #, :item_purchase_id
 
+  VALID_POSTALCODE_REGEX = /\A\d{3}[-]\d{4}\z/
 
   with_options presence: true do
-    validates :postal_code, length: { maximum: 8 }, format: {with: /\A\d{3}[-]\d{4}\z/}
+    validates :postal_code, length: { maximum: 8 }, format: {with: VALID_POSTALCODE_REGEX}
     validates :area_id, numericality: { only_integer: true }
     validates :city
     validates :address

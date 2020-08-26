@@ -58,7 +58,7 @@ class ItemPurchasesController < ApplicationController
   end
 
   def purchase_params
-    params.permit(:item_id, :price, :postal_code, :area_id, :city, :address, :building, :tel).merge(user_id: current_user.id)
+    params.permit(:item_id, :price, :postal_code, :area_id, :city, :address, :building, :tel, :token).merge(user_id: current_user.id)
   end
 
   # PAY.JPで支払い情報を生成するオブジェクト

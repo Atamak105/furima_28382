@@ -9,7 +9,7 @@ class User < ApplicationRecord
   VALID_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]+\z/
 
   has_many :items
-  has_one :item_purchases
+  has_one :item_purchase
 
   # 入力必須項目の設定 バリデーション設定
   validates :birthday, :nickname, :email, :encrypted_password, presence:true

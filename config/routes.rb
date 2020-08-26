@@ -3,6 +3,12 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :items
+  resources :items do
+    resources :item_purchases, only: [:index, :create, :new] do
+      collection do
+        get 'done'
+      end
+    end
+  end
 
 end

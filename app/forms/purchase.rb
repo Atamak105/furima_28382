@@ -11,6 +11,7 @@ class Purchase
     validates :city
     validates :address
     validates :tel, numericality: { only_integer: true }, length: { maximum: 11 }
+    validates :token
   end
   
   def save

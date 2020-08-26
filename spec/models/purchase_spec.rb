@@ -4,6 +4,7 @@ RSpec.describe Purchase, type: :model do
   describe "商品購入機能" do
     before do
       @purchase = FactoryBot.build(:purchase)
+      @purchase.token = ('1234qwer')
     end
 
     context "購入がうまく行くとき" do
@@ -13,6 +14,11 @@ RSpec.describe Purchase, type: :model do
     end
 
     context "購入がうまくいかないとき" do
+      it "tokenが空だと購入できないこと" do
+        @purchase.token = nil
+        @purchase.valid?
+        expect(@purchase.errors.full_messages).to include("Token can't be blank")
+      end
       it "postal_codeが空だと購入できないこと" do
         @purchase.postal_code = nil
         @purchase.valid?
